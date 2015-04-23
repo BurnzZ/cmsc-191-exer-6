@@ -11,9 +11,30 @@
 </head>
 <body>
 
-<div id="container">
-	Welcome to fruit
-</div>
+
+	<div id="welcome">
+
+		<article id="home">
+			<header>
+				<h1>FRUITS</h1>
+				<p>View, Add, Edit and Delete fruit stuff.</p>
+			</header>
+
+			<nav>
+				<ul>
+					<li><a href="#">MongoDb</a></li>
+					<li><a href="#">MySQL</a></li>
+					<li><a href="#">CouchDB</a></li>
+				</ul>
+			</nav>
+		</article>
+	</div>
+
+	<div id="wrapper">
+		<div id="fruit-basket">
+			
+		</div>
+	</div>
 
 </body>
 </html>
