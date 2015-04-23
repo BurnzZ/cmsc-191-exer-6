@@ -13,11 +13,11 @@ a {
 	color: white;
 	text-decoration: none;
 
-	@include transition(all, 0.5s, ease-in-out);
+	@include transition(all, 0.2s, ease-in-out);
 
 	&:hover {
 		text-decoration: none;
-		color: #eb4d5c;
+		margin-right: 10px;
 	}
 }
 
@@ -31,7 +31,7 @@ article#home {
 	background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../../img/cover-blur.jpg") no-repeat center center;
 	background-size: cover; 
 
-	@include shadow();
+	@include box-shadow();
 
 	header {
 		font-family: sans-serif;
@@ -78,17 +78,92 @@ article#home {
 	padding-top: 30px;
 	margin-bottom: 30px;
 	color: #443642;
-
-	#fruit-basket {
-		margin: 0 auto;
-		background-color: gray;
-		min-height: 500px;
-		width: 80%;
-	}
 }
 
+#fruit-basket {
 
+	margin: 0 auto;
+	min-height: 500px;
+	width: 90%;
 
+	.fruit {
+		position: relative;
+
+		background-color: white;
+		width: 30%;
+		float: left;
+		text-align: center;
+		margin-bottom: 40px;
+
+		@include border-radius(5px);
+		@include transition(all, 0.4s, ease-in-out);
+
+		&:hover {
+			@include box-shadow();
+
+			.fruit-mods {
+				visibility: visible;
+			}
+		}
+
+		&:nth-child(3n+2) {
+			margin-right: 5%;
+			margin-left: 5%;
+		}
+
+		.fruit-name {
+			font-size: 2em;
+			margin: 12px 0;
+		}
+
+		.fruit-details {
+
+			div {
+				margin:	5px 0;
+			}
+
+			.fruit-quantity {
+				&:before {
+					content: "Quantity: "
+				}
+			}
+
+			.fruit-distributor {
+				&:before {
+					content: "Distributor: "
+				}
+			}
+		}
+
+		.fruit-mods {
+			width: 100%;
+			margin-top: 10px;
+			font-weight: bold;
+			visibility: hidden;
+
+			@include border-radius(5px);
+
+			div {
+				display: inline-block;
+				margin: 0 10px;
+				line-height: normal;
+
+				&:hover {
+					cursor: pointer;
+				}
+
+				&.btn-edit:hover {
+					color: #0588BC;
+				}
+
+				&.btn-delete:hover {
+					color: #FF3030;
+				}
+			}
+		}
+	}
+
+}
 
 
 

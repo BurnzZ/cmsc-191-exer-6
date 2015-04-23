@@ -13,8 +13,15 @@
     transition: $transition-property $transition-time $method;
 }
 
-@mixin shadow() {
+@mixin box-shadow() {
   -moz-box-shadow:    0 4px 2px 0 rgba(0, 0, 0, 0.22);
   -webkit-box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.22);
   box-shadow:         0 4px 2px 0 rgba(0, 0, 0, 0.22);
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
 }

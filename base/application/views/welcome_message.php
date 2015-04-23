@@ -19,10 +19,10 @@
 				<h1>FRUITS</h1>
 				<p>View, Add, Edit and Delete fruit stuff.</p>
 			</header>
-
+<?php echo base_url(); ?>
 			<nav>
 				<ul>
-					<li><a href="#">MongoDb</a></li>
+					<li><a href="<?php echo base_url(); ?>/base">MongoDb</a></li>
 					<li><a href="#">MySQL</a></li>
 					<li><a href="#">CouchDB</a></li>
 				</ul>
@@ -33,6 +33,108 @@
 	<div id="wrapper">
 		<div id="fruit-basket">
 			
+			<!-- these are the sample structure of the fruit -->
+
+			<!-- the contents of id="fruit-basket" should be empty initially
+				 and just has to be populated from the controller to the view.
+			-->
+
+			<article class="fruit" id="1">
+				<header class="fruit-name">
+					APPLE
+				</header>
+
+				<section class="fruit-details">
+					<div class="fruit-quantity">10</div>
+					<div class="fruit-distributor">del Monte</div>
+				</section>
+
+				<section class="fruit-mods">
+					<div class="btn-edit">EDIT</div>
+					<div class="btn-delete">DELETE</div>
+				</section>
+			</article>
+
+			<article class="fruit" id="2">
+				<header class="fruit-name">
+					APPLE
+				</header>
+
+				<section class="fruit-details">
+					<div class="fruit-quantity">10</div>
+					<div class="fruit-distributor">del Monte</div>
+				</section>
+
+				<section class="fruit-mods">
+					<div class="btn-edit">EDIT</div>
+					<div class="btn-delete">DELETE</div>
+				</section>
+			</article>
+
+			<article class="fruit" id="3">
+				<header class="fruit-name">
+					APPLE
+				</header>
+
+				<section class="fruit-details">
+					<div class="fruit-quantity">10</div>
+					<div class="fruit-distributor">del Monte</div>
+				</section>
+
+				<section class="fruit-mods">
+					<div class="btn-edit">EDIT</div>
+					<div class="btn-delete">DELETE</div>
+				</section>
+			</article>
+
+			<article class="fruit" id="4">
+				<header class="fruit-name">
+					APPLE
+				</header>
+
+				<section class="fruit-details">
+					<div class="fruit-quantity">10</div>
+					<div class="fruit-distributor">del Monte</div>
+				</section>
+
+				<section class="fruit-mods">
+					<div class="btn-edit">EDIT</div>
+					<div class="btn-delete">DELETE</div>
+				</section>
+			</article>
+
+			<article class="fruit" id="5">
+				<header class="fruit-name">
+					APPLE
+				</header>
+
+				<section class="fruit-details">
+					<div class="fruit-quantity">10</div>
+					<div class="fruit-distributor">del Monte</div>
+				</section>
+
+				<section class="fruit-mods">
+					<div class="btn-edit">EDIT</div>
+					<div class="btn-delete">DELETE</div>
+				</section>
+			</article>
+
+			<article class="fruit" id="6">
+				<header class="fruit-name">
+					APPLE
+				</header>
+
+				<section class="fruit-details">
+					<div class="fruit-quantity">10</div>
+					<div class="fruit-distributor">del Monte</div>
+				</section>
+
+				<section class="fruit-mods">
+					<div class="btn-edit">EDIT</div>
+					<div class="btn-delete">DELETE</div>
+				</section>
+			</article>
+
 		</div>
 	</div>
 
