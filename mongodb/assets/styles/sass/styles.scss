@@ -10,14 +10,22 @@ body {
 }
 
 a {
-	color: white;
 	text-decoration: none;
+}
+
+nav a {
+	color: white;
 
 	@include transition(all, 0.2s, ease-in-out);
 
 	&:hover {
 		text-decoration: none;
 		margin-right: 10px;
+	}
+
+	&.active {
+		font-weight: bold;
+		color: cyan;
 	}
 }
 
@@ -83,7 +91,7 @@ article#home {
 #fruit-basket {
 
 	margin: 0 auto;
-	min-height: 500px;
+	min-height: 400px;
 	width: 90%;
 
 	.fruit {
@@ -96,7 +104,7 @@ article#home {
 		margin-bottom: 40px;
 
 		@include border-radius(5px);
-		@include transition(all, 0.4s, ease-in-out);
+		@include transition(all, 0.2s, ease-in-out);
 
 		&:hover {
 			@include box-shadow();
@@ -152,17 +160,74 @@ article#home {
 					cursor: pointer;
 				}
 
-				&.btn-edit:hover {
+				&.btn-edit:hover,
+				&.btn-edit:hover a {
 					color: #0588BC;
 				}
 
 				&.btn-delete:hover {
 					color: #FF3030;
 				}
+
+				a.modal-link {
+					color: #443642;
+				}
 			}
 		}
 	}
+}
 
+#modal-edit {
+
+	.field {
+		margin: 10px 0;
+	}
+
+	label { 
+		display: inline-block;
+		width: 140px;
+		margin-right: 10px;
+		text-align: right;
+	}
+
+	input[type="text"] {
+		font-size: 1em;
+		outline: none;
+		padding: 3px 0px 3px 3px;
+		margin: 5px 1px 3px 0px;
+		border: 1px solid #DDDDDD;
+
+		@include transition(all, 0.3s, ease-in-out);
+
+		&:hover {
+			box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+			padding: 3px 0px 3px 3px;
+			margin: 5px 1px 3px 0px;
+			border: 1px solid rgba(81, 203, 238, 1);
+		}
+	}
+
+	.center {
+		text-align: center;
+	}
+
+	input[type="submit"] {
+		border-radius: 5px;
+		padding: 8px 12px;
+		font-size: 1em;
+		text-decoration: none;
+		margin: 20px;
+		color: #fff;
+		position: relative;
+		display: inline-block;
+
+		background-color: #2ecc71;
+
+  		&:hover {
+  			background-color: #48E68B;
+  			cursor: pointer;
+  		}
+	}
 }
 
 

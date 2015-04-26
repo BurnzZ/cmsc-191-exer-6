@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Fruit -- BASE</title>
+	<title>Fruits in MongoDB</title>
 
 	<link rel="stylesheet" type="text/css" href="./assets/styles/css/styles.css">
+	<link rel="stylesheet" href="./assets/js/jquery-modal/jquery.modal.css" type="text/css" media="screen" />
 
 	<script type="text/javascript" src="./assets/js/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="./assets/js/main.js"></script>
+	<script type="text/javascript" src="./assets/js/jquery-modal/jquery.modal.js"></script>
 </head>
 <body>
 
@@ -22,7 +24,7 @@
 
 			<nav>
 				<ul>
-					<li><a href="<?php echo str_replace(basename(base_url())."/", "mongodb", base_url()); ?>">MongoDb</a></li>
+					<li><a class="active" href="<?php echo str_replace(basename(base_url())."/", "mongodb", base_url()); ?>">MongoDb</a></li>
 					<li><a href="<?php echo str_replace(basename(base_url())."/", "mysql", base_url()); ?>">MySQL</a></li>
 					<li><a href="<?php echo str_replace(basename(base_url())."/", "couchdb", base_url()); ?>">CouchDB</a></li>
 				</ul>
@@ -40,9 +42,7 @@
 			-->
 
 			<article class="fruit" id="1">
-				<header class="fruit-name">
-					APPLE
-				</header>
+				<header class="fruit-name">APPLE</header>
 
 				<section class="fruit-details">
 					<div class="fruit-quantity">10</div>
@@ -50,90 +50,85 @@
 				</section>
 
 				<section class="fruit-mods">
-					<div class="btn-edit">EDIT</div>
+					<div class="btn-edit"><a class="modal-link" href="#modal-edit" rel="modal:open">EDIT</a></div>
 					<div class="btn-delete">DELETE</div>
 				</section>
 			</article>
 
 			<article class="fruit" id="2">
-				<header class="fruit-name">
-					APPLE
-				</header>
+				<header class="fruit-name">Banana</header>
 
 				<section class="fruit-details">
-					<div class="fruit-quantity">10</div>
-					<div class="fruit-distributor">del Monte</div>
+					<div class="fruit-quantity">9</div>
+					<div class="fruit-distributor">dun sa may Grove</div>
 				</section>
 
 				<section class="fruit-mods">
-					<div class="btn-edit">EDIT</div>
+					<div class="btn-edit"><a class="modal-link" href="#modal-edit" rel="modal:open">EDIT</a></div>
 					<div class="btn-delete">DELETE</div>
 				</section>
 			</article>
 
 			<article class="fruit" id="3">
-				<header class="fruit-name">
-					APPLE
-				</header>
+				<header class="fruit-name">Grapes</header>
 
 				<section class="fruit-details">
-					<div class="fruit-quantity">10</div>
-					<div class="fruit-distributor">del Monte</div>
+					<div class="fruit-quantity">8</div>
+					<div class="fruit-distributor">Savemore</div>
 				</section>
 
 				<section class="fruit-mods">
-					<div class="btn-edit">EDIT</div>
+					<div class="btn-edit"><a class="modal-link" href="#modal-edit" rel="modal:open">EDIT</a></div>
 					<div class="btn-delete">DELETE</div>
 				</section>
 			</article>
 
 			<article class="fruit" id="4">
-				<header class="fruit-name">
-					APPLE
-				</header>
+				<header class="fruit-name">Guyabano</header>
 
 				<section class="fruit-details">
-					<div class="fruit-quantity">10</div>
-					<div class="fruit-distributor">del Monte</div>
+					<div class="fruit-quantity">7</div>
+					<div class="fruit-distributor">Fruits pa More</div>
 				</section>
 
 				<section class="fruit-mods">
-					<div class="btn-edit">EDIT</div>
+					<div class="btn-edit"><a class="modal-link" href="#modal-edit" rel="modal:open">EDIT</a></div>
 					<div class="btn-delete">DELETE</div>
 				</section>
 			</article>
 
 			<article class="fruit" id="5">
-				<header class="fruit-name">
-					APPLE
-				</header>
+				<header class="fruit-name">Kiwi</header>
 
 				<section class="fruit-details">
-					<div class="fruit-quantity">10</div>
-					<div class="fruit-distributor">del Monte</div>
+					<div class="fruit-quantity">6</div>
+					<div class="fruit-distributor">weeeee</div>
 				</section>
 
 				<section class="fruit-mods">
-					<div class="btn-edit">EDIT</div>
+					<div class="btn-edit"><a class="modal-link" href="#modal-edit" rel="modal:open">EDIT</a></div>
 					<div class="btn-delete">DELETE</div>
 				</section>
 			</article>
 
 			<article class="fruit" id="6">
-				<header class="fruit-name">
-					APPLE
-				</header>
+				<header class="fruit-name">Fruit Salad</header>
 
 				<section class="fruit-details">
-					<div class="fruit-quantity">10</div>
-					<div class="fruit-distributor">del Monte</div>
+					<div class="fruit-quantity">5</div>
+					<div class="fruit-distributor">Mic test</div>
 				</section>
 
 				<section class="fruit-mods">
-					<div class="btn-edit">EDIT</div>
+					<div class="btn-edit"><a class="modal-link" href="#modal-edit" rel="modal:open">EDIT</a></div>
 					<div class="btn-delete">DELETE</div>
 				</section>
 			</article>
+
+			<!-- Modal HTML embedded directly into document -->
+			<div id="modal-edit" style="display:none;">
+
+			</div>
 
 		</div>
 	</div>
