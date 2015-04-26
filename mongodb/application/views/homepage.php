@@ -10,6 +10,7 @@
 	<script type="text/javascript" src="./assets/js/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="./assets/js/main.js"></script>
 	<script type="text/javascript" src="./assets/js/jquery-modal/jquery.modal.js"></script>
+	<script type="text/javascript" src="./assets/js/custom-highcharts.js"></script>
 </head>
 <body>
 
@@ -51,6 +52,7 @@
 
 				<section class="fruit-mods">
 					<div class="btn-edit"><a class="modal-link" href="#modal-edit" rel="modal:open">EDIT</a></div>
+					<div class="btn-prices"><a class="modal-link" href="#modal-prices" rel="modal:open">PRICES</a></div>
 					<div class="btn-delete">DELETE</div>
 				</section>
 			</article>
@@ -65,6 +67,7 @@
 
 				<section class="fruit-mods">
 					<div class="btn-edit"><a class="modal-link" href="#modal-edit" rel="modal:open">EDIT</a></div>
+					<div class="btn-prices"><a class="modal-link" href="#modal-prices" rel="modal:open">PRICES</a></div>
 					<div class="btn-delete">DELETE</div>
 				</section>
 			</article>
@@ -79,6 +82,7 @@
 
 				<section class="fruit-mods">
 					<div class="btn-edit"><a class="modal-link" href="#modal-edit" rel="modal:open">EDIT</a></div>
+					<div class="btn-prices"><a class="modal-link" href="#modal-prices" rel="modal:open">PRICES</a></div>
 					<div class="btn-delete">DELETE</div>
 				</section>
 			</article>
@@ -93,6 +97,7 @@
 
 				<section class="fruit-mods">
 					<div class="btn-edit"><a class="modal-link" href="#modal-edit" rel="modal:open">EDIT</a></div>
+					<div class="btn-prices"><a class="modal-link" href="#modal-prices" rel="modal:open">PRICES</a></div>
 					<div class="btn-delete">DELETE</div>
 				</section>
 			</article>
@@ -107,6 +112,7 @@
 
 				<section class="fruit-mods">
 					<div class="btn-edit"><a class="modal-link" href="#modal-edit" rel="modal:open">EDIT</a></div>
+					<div class="btn-prices"><a class="modal-link" href="#modal-prices" rel="modal:open">PRICES</a></div>
 					<div class="btn-delete">DELETE</div>
 				</section>
 			</article>
@@ -121,13 +127,17 @@
 
 				<section class="fruit-mods">
 					<div class="btn-edit"><a class="modal-link" href="#modal-edit" rel="modal:open">EDIT</a></div>
+					<div class="btn-prices"><a class="modal-link" href="#modal-prices" rel="modal:open">PRICES</a></div>
 					<div class="btn-delete">DELETE</div>
 				</section>
 			</article>
 
-			<!-- Modal HTML embedded directly into document -->
-			<div id="modal-edit" style="display:none;">
+			<!-- Modal for when clicking EDIT -->
+			<div id="modal-edit" style="display:none;"></div>
 
+			<!-- Modal for when clicking PRICES -->
+			<div id="modal-prices" style="display:none; min-width: 600px;">
+				<div id="highcharts" style="min-width: 600px; height: 400px; margin: 0 auto"></div>
 			</div>
 
 		</div>
