@@ -19,12 +19,12 @@
 				<h1>FRUITS</h1>
 				<p>View, Add, Edit and Delete fruit stuff.</p>
 			</header>
-<?php echo base_url(); ?>
+
 			<nav>
 				<ul>
-					<li><a href="<?php echo base_url(); ?>/base">MongoDb</a></li>
-					<li><a href="#">MySQL</a></li>
-					<li><a href="#">CouchDB</a></li>
+					<li><a href="<?php echo str_replace(basename(base_url())."/", "mongodb", base_url()); ?>">MongoDb</a></li>
+					<li><a href="<?php echo str_replace(basename(base_url())."/", "mysql", base_url()); ?>">MySQL</a></li>
+					<li><a href="<?php echo str_replace(basename(base_url())."/", "couchdb", base_url()); ?>">CouchDB</a></li>
 				</ul>
 			</nav>
 		</article>
