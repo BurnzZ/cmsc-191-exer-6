@@ -34,6 +34,13 @@
 	</div>
 
 	<div id="wrapper">
+
+		<div class="btn-container">
+			<a class="modal-link" href="#modal-add" rel="modal:open">
+				<div id="btn-add">Add Fruit</div>
+			</a>
+		</div>
+
 		<div id="fruit-basket">
 			
 			<!-- these are the sample structure of the fruit -->
@@ -131,6 +138,9 @@
 					<div class="btn-delete">DELETE</div>
 				</section>
 			</article>
+
+			<!-- Modal for when clicking ADD FRUIT -->
+			<div id="modal-add" style="display:none;"></div>
 
 			<!-- Modal for when clicking EDIT -->
 			<div id="modal-edit" style="display:none;"></div>

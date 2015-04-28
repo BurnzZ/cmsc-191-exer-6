@@ -1,29 +1,62 @@
 $(document).ready( function() {
 
+	$('#btn-add').on('click', function() {
+
+		var form = '<form id="form-add" method="post" action=""> \
+				<div class="field"> \
+					<label for="new-fruit-name">Fruit Name</label> \
+					<input type="text" id="new-fruit-name" name="new-fruit-name" required> \
+				</div> \
+				\
+				<div class="field"> \
+					<label for="new-fruit-quantity">Quantity</label> \
+					<input type="text" id="new-fruit-quantity" name="new-fruit-quantity" required> \
+				</div> \
+				\
+				<div class="field"> \
+					<label for="new-fruit-distributor">Fruit Distributor</label> \
+					<input type="text" id="new-fruit-distributor" name="new-fruit-distributor" required> \
+				</div> \
+				\
+				<div class="field"> \
+					<label for="new-fruit-price">Price</label> \
+					<input type="text" id="new-fruit-price" name="new-fruit-price" required> \
+				</div> \
+				\
+				<div class="field center"> \
+			        <input type="submit"> \
+			    </div> \
+			</form>';
+
+		$('#modal-add').html(form);
+	});
+
+
+
 	$('.btn-edit').on('click', function() {
 
 		// gets the id of the fruit
 		var id = $(this).parent().parent().attr('id');
 		
-		var form = '<form id="form" method="post" action=""> \
+		var form = '<form id="form-edit" method="post" action=""> \
 				<div class="field"> \
-					<label for="fruit-name">Fruit Name</label> \
-					<input type="text" id="fruit-name" name="fruit-name" required> \
+					<label for="edit-fruit-name">Fruit Name</label> \
+					<input type="text" id="edit-fruit-name" name="edit-fruit-name" required> \
 				</div> \
 				\
 				<div class="field"> \
-					<label for="fruit-quantity">Quantity</label> \
-					<input type="text" id="fruit-quantity" name="fruit-quantity" required> \
+					<label for="edit-fruit-quantity">Quantity</label> \
+					<input type="text" id="edit-fruit-quantity" name="edit-fruit-quantity" required> \
 				</div> \
 				\
 				<div class="field"> \
-					<label for="fruit-distributor">Fruit Distributor</label> \
-					<input type="text" id="fruit-distributor" name="fruit-distributor" required> \
+					<label for="edit-fruit-distributor">Fruit Distributor</label> \
+					<input type="text" id="edit-fruit-distributor" name="edit-fruit-distributor" required> \
 				</div> \
 				\
 				<div class="field"> \
-					<label for="fruit-price">New Price</label> \
-					<input type="text" id="fruit-price" name="fruit-price" required> \
+					<label for="edit-fruit-price">New Price</label> \
+					<input type="text" id="edit-fruit-price" name="edit-fruit-price" required> \
 				</div> \
 				\
 				<div class="field center"> \
@@ -33,9 +66,9 @@ $(document).ready( function() {
 
 		$('#modal-edit').html(form);
 
-		$('#modal-edit #fruit-name').val( $('#'+id+' .fruit-name').text() );
-		$('#modal-edit #fruit-quantity').val( $('#'+id+' .fruit-quantity').text() );
-		$('#modal-edit #fruit-distributor').val( $('#'+id+' .fruit-distributor').text() );
+		$('#modal-edit #edit-fruit-name').val( $('#'+id+' .fruit-name').text() );
+		$('#modal-edit #edit-fruit-quantity').val( $('#'+id+' .fruit-quantity').text() );
+		$('#modal-edit #edit-fruit-distributor').val( $('#'+id+' .fruit-distributor').text() );
 	});
 
 	$('.btn-prices').on('click', function() {
