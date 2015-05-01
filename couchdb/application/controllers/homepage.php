@@ -19,7 +19,12 @@ class Homepage extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('homepage');
+		$data = $this->couchdb->getAllDocs();
+		$i=0;
+		for($i=0; $i<count($data); $i++){
+			$mydata = (array)$this->couchdb->getDoc($i+1);
+			$this->load->view('homepage', $mydata);
+		}
 	}
 }
 

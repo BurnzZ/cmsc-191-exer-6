@@ -111,6 +111,7 @@ $autoload['language'] = array();
 
 $autoload['model'] = array();
 
+$autoload['libraries'] = array('couchdb');
 
 /* End of file autoload.php */
 /* Location: ./application/config/autoload.php */
