@@ -1,8 +1,7 @@
 $(document).ready( function() {
 
 	$('#btn-add').on('click', function() {
-
-		var form = '<form id="form-add" method="post" action=""> \
+		var form = '<form id="form-add" method="post" action="'+base_url+'homepage/add"> \
 				<div class="field"> \
 					<label for="new-fruit-name">Fruit Name</label> \
 					<input type="text" id="new-fruit-name" name="new-fruit-name" required> \
@@ -38,7 +37,8 @@ $(document).ready( function() {
 		// gets the id of the fruit
 		var id = $(this).parent().parent().attr('id');
 		
-		var form = '<form id="form-edit" method="post" action=""> \
+		var form = '<form id="form-edit" method="post" action="'+base_url+'homepage/edit"> \
+				<input type="hidden" id="edit-fruit-id" name="edit-fruit-id" value="'+id+'"> \
 				<div class="field"> \
 					<label for="edit-fruit-name">Fruit Name</label> \
 					<input type="text" id="edit-fruit-name" name="edit-fruit-name" required> \

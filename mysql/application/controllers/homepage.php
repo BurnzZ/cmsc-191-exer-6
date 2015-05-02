@@ -17,9 +17,27 @@ class Homepage extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+
+
+	function __construct(){
+		parent::__construct();
+		$this->load->model('model_homepage');
+	}
+
 	public function index()
 	{
-		$this->load->view('homepage');
+		$data['fruits']=$this->model_homepage->get_fruits();
+		$this->load->view('homepage', $data);
+	}
+
+	public function edit(){
+		$this->model_homepage->edit_fruit($this->input->post());
+		redirect(base_url(), 'refresh');
+	}
+
+	public function add(){
+		$this->model_homepage->add_fruit($this->input->post());
+		redirect(base_url(), 'refresh');
 	}
 }
 
