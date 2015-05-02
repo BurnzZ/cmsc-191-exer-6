@@ -84,7 +84,7 @@
 					<div class="btn-prices"><a class="modal-link" href="#modal-prices" rel="modal:open">PRICES</a></div>
 					<div class="btn-delete">DELETE</div>
 				</section>
-			</article>
+			</article> -->
 
 
 			<!-- Modal for when clicking ADD FRUIT -->
