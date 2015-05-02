@@ -17,14 +17,13 @@ class Homepage extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{
-		$data = $this->couchdb->getAllDocs();
-		$i=0;
-		for($i=0; $i<count($data); $i++){
-			$mydata = (array)$this->couchdb->getDoc($i+1);
-			$this->load->view('homepage', $mydata);
-		}
+	public function index() {
+
+		$fruits = $this->model_homepage->getAll();
+
+		$data['fruits'] = $fruits;
+
+		$this->load->view('homepage', $data);
 	}
 }
 
