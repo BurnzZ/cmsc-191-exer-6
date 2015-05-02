@@ -19,8 +19,38 @@ class Homepage extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('homepage');
+		$m = new MongoClient();
+	    $db = $m->test;
+	    $collection = $db->fruits;
+
+		if(isset($_POST['new-fruit-name'])){
+
+		    $document = array( 
+		       "name" => $_POST['new-fruit-name'], 
+		       "qty" => $_POST['new-fruit-quantity'], 
+		       "dist" => $_POST['new-fruit-distributor'],
+		       "price" => $_POST['new-fruit-price']
+		    );
+		    $collection->insert($document);
+		}
+
+		elseif (isset($_POST['edit-fruit-name'])) {
+
+			$document = array( '$set' => array(
+		       "name" => $_POST['edit-fruit-name'], 
+		       "qty" => $_POST['edit-fruit-quantity'], 
+		       "dist" => $_POST['edit-fruit-distributor'],
+		       "price" => $_POST['edit-fruit-price']
+		    ));
+
+			$collection->update(array("_id"=>new MongoId($_POST['edit-fruit-id'])), $document);
+		}
+
+
+		$data['fruits'] = $collection->find()->sort(array('name'=>1));
+		$this->load->view('homepage',$data);
 	}
+
 }
 
 /* End of file welcome.php */

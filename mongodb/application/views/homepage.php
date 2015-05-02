@@ -48,96 +48,36 @@
 			<!-- the contents of id="fruit-basket" should be empty initially
 				 and just has to be populated from the controller to the view.
 			-->
+			<?php
 
-			<article class="fruit" id="1">
-				<header class="fruit-name">APPLE</header>
+			$id = 1;
 
-				<section class="fruit-details">
-					<div class="fruit-quantity">10</div>
-					<div class="fruit-distributor">del Monte</div>
-				</section>
+			foreach ($fruits as $fruit) {
 
-				<section class="fruit-mods">
-					<div class="btn-edit"><a class="modal-link" href="#modal-edit" rel="modal:open">EDIT</a></div>
-					<div class="btn-prices"><a class="modal-link" href="#modal-prices" rel="modal:open">PRICES</a></div>
-					<div class="btn-delete">DELETE</div>
-				</section>
-			</article>
+			?>
+				<article class="fruit" id="<?php echo $id;?>">
+					<header class="fruit-name"><?php echo $fruit['name'];?></header>
+					<span class="small fruit-id"><?php echo $fruit['_id'];?></span>
+					
+					<section class="fruit-details">
+						<div class="fruit-quantity"><?php echo $fruit['qty'];?></div>
+						<div class="fruit-distributor"><?php echo $fruit['dist'];?></div>
+					</section>
 
-			<article class="fruit" id="2">
-				<header class="fruit-name">Banana</header>
+					<section class="fruit-mods">
+						<div class="btn-edit"><a class="modal-link" href="#modal-edit" rel="modal:open">EDIT</a></div>
+						<div class="btn-prices"><a class="modal-link" href="#modal-prices" rel="modal:open">PRICES</a></div>
+						<div class="btn-delete">DELETE</div>
+					</section>
+				</article>
+			
+			<?php
 
-				<section class="fruit-details">
-					<div class="fruit-quantity">9</div>
-					<div class="fruit-distributor">dun sa may Grove</div>
-				</section>
+			$id+=1;
 
-				<section class="fruit-mods">
-					<div class="btn-edit"><a class="modal-link" href="#modal-edit" rel="modal:open">EDIT</a></div>
-					<div class="btn-prices"><a class="modal-link" href="#modal-prices" rel="modal:open">PRICES</a></div>
-					<div class="btn-delete">DELETE</div>
-				</section>
-			</article>
+			}
 
-			<article class="fruit" id="3">
-				<header class="fruit-name">Grapes</header>
-
-				<section class="fruit-details">
-					<div class="fruit-quantity">8</div>
-					<div class="fruit-distributor">Savemore</div>
-				</section>
-
-				<section class="fruit-mods">
-					<div class="btn-edit"><a class="modal-link" href="#modal-edit" rel="modal:open">EDIT</a></div>
-					<div class="btn-prices"><a class="modal-link" href="#modal-prices" rel="modal:open">PRICES</a></div>
-					<div class="btn-delete">DELETE</div>
-				</section>
-			</article>
-
-			<article class="fruit" id="4">
-				<header class="fruit-name">Guyabano</header>
-
-				<section class="fruit-details">
-					<div class="fruit-quantity">7</div>
-					<div class="fruit-distributor">Fruits pa More</div>
-				</section>
-
-				<section class="fruit-mods">
-					<div class="btn-edit"><a class="modal-link" href="#modal-edit" rel="modal:open">EDIT</a></div>
-					<div class="btn-prices"><a class="modal-link" href="#modal-prices" rel="modal:open">PRICES</a></div>
-					<div class="btn-delete">DELETE</div>
-				</section>
-			</article>
-
-			<article class="fruit" id="5">
-				<header class="fruit-name">Kiwi</header>
-
-				<section class="fruit-details">
-					<div class="fruit-quantity">6</div>
-					<div class="fruit-distributor">weeeee</div>
-				</section>
-
-				<section class="fruit-mods">
-					<div class="btn-edit"><a class="modal-link" href="#modal-edit" rel="modal:open">EDIT</a></div>
-					<div class="btn-prices"><a class="modal-link" href="#modal-prices" rel="modal:open">PRICES</a></div>
-					<div class="btn-delete">DELETE</div>
-				</section>
-			</article>
-
-			<article class="fruit" id="6">
-				<header class="fruit-name">Fruit Salad</header>
-
-				<section class="fruit-details">
-					<div class="fruit-quantity">5</div>
-					<div class="fruit-distributor">Mic test</div>
-				</section>
-
-				<section class="fruit-mods">
-					<div class="btn-edit"><a class="modal-link" href="#modal-edit" rel="modal:open">EDIT</a></div>
-					<div class="btn-prices"><a class="modal-link" href="#modal-prices" rel="modal:open">PRICES</a></div>
-					<div class="btn-delete">DELETE</div>
-				</section>
-			</article>
+			?>
 
 			<!-- Modal for when clicking ADD FRUIT -->
 			<div id="modal-add" style="display:none;"></div>

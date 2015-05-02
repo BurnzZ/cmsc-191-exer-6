@@ -45,6 +45,11 @@ $(document).ready( function() {
 				</div> \
 				\
 				<div class="field"> \
+					<label for="edit-fruit-id">Fruit ID</label> \
+					<input type="text" id="edit-fruit-id" name="edit-fruit-id" readonly> \
+				</div> \
+				\
+				<div class="field"> \
 					<label for="edit-fruit-quantity">Quantity</label> \
 					<input type="text" id="edit-fruit-quantity" name="edit-fruit-quantity" required> \
 				</div> \
@@ -67,6 +72,7 @@ $(document).ready( function() {
 		$('#modal-edit').html(form);
 
 		$('#modal-edit #edit-fruit-name').val( $('#'+id+' .fruit-name').text() );
+		$('#modal-edit #edit-fruit-id').val( $('#'+id+' .fruit-id').text() );
 		$('#modal-edit #edit-fruit-quantity').val( $('#'+id+' .fruit-quantity').text() );
 		$('#modal-edit #edit-fruit-distributor').val( $('#'+id+' .fruit-distributor').text() );
 	});
