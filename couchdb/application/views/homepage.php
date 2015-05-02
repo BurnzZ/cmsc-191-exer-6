@@ -49,7 +49,16 @@
 				 and just has to be populated from the controller to the view.
 			-->
 
-			<article class="fruit" id="1">
+			<?php
+
+
+			// $fruit = $mydata['fruit'];
+			// $price = $mydata['price'];
+			// $qty = 
+			echo $mydata['name'];
+			?>
+
+			<!-- <article class="fruit" id="1">
 				<header class="fruit-name">APPLE</header>
 
 				<section class="fruit-details">
@@ -137,7 +146,7 @@
 					<div class="btn-prices"><a class="modal-link" href="#modal-prices" rel="modal:open">PRICES</a></div>
 					<div class="btn-delete">DELETE</div>
 				</section>
-			</article>
+			</article> -->
 
 			<!-- Modal for when clicking ADD FRUIT -->
 			<div id="modal-add" style="display:none;"></div>
