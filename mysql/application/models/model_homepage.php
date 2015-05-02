@@ -27,5 +27,10 @@
 			$query=$this->db->query("REPLACE INTO fruitprice (`id`, `price`, `date`) values (".$id.",".$price.", NOW())") or die(mysqli_error());
 			return;
 		}
+
+		public function delete_fruit($id){
+			$query=$this->db->query("DELETE FROM `fruit` where `id`=".$id);
+			return;
+		}
 	}
 ?>

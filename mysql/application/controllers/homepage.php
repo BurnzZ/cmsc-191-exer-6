@@ -30,13 +30,18 @@ class Homepage extends CI_Controller {
 		$this->load->view('homepage', $data);
 	}
 
-	public function edit(){
+	public function edit_fruit(){
 		$this->model_homepage->edit_fruit($this->input->post());
 		redirect(base_url(), 'refresh');
 	}
 
-	public function add(){
+	public function add_fruit(){
 		$this->model_homepage->add_fruit($this->input->post());
+		redirect(base_url(), 'refresh');
+	}
+
+	public function delete_fruit($fruit_id){
+		$this->model_homepage->delete_fruit($fruit_id);
 		redirect(base_url(), 'refresh');
 	}
 }

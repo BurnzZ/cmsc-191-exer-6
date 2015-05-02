@@ -1,7 +1,7 @@
 $(document).ready( function() {
 
 	$('#btn-add').on('click', function() {
-		var form = '<form id="form-add" method="post" action="'+base_url+'homepage/add"> \
+		var form = '<form id="form-add" method="post" action="'+base_url+'homepage/add_fruit"> \
 				<div class="field"> \
 					<label for="new-fruit-name">Fruit Name</label> \
 					<input type="text" id="new-fruit-name" name="new-fruit-name" required> \
@@ -37,7 +37,7 @@ $(document).ready( function() {
 		// gets the id of the fruit
 		var id = $(this).parent().parent().attr('id');
 		
-		var form = '<form id="form-edit" method="post" action="'+base_url+'homepage/edit"> \
+		var form = '<form id="form-edit" method="post" action="'+base_url+'homepage/edit_fruit"> \
 				<input type="hidden" id="edit-fruit-id" name="edit-fruit-id" value="'+id+'"> \
 				<div class="field"> \
 					<label for="edit-fruit-name">Fruit Name</label> \
@@ -135,7 +135,7 @@ $(document).ready( function() {
 
 		// gets the id of the fruit
 		var id = $(this).parent().parent().attr('id')
-
-		alert("clicked DELETE on id=" + id);
+		window.document.location = base_url+"homepage/delete_fruit/"+id;
+		// alert("clicked DELETE on id=" + id);
 	});
 });
