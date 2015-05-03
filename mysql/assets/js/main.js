@@ -85,7 +85,7 @@ $(document).ready( function() {
 			success: function(values) {
 				var price=new Array()
 				for(var i=0; i<values.prices.length; i++){
-					price.push(values.prices[i]);
+					price.push(parseInt(values.prices[i]));
 				}
 
 				console.log(price);

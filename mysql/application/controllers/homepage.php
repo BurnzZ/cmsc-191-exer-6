@@ -50,14 +50,14 @@ class Homepage extends CI_Controller {
 		$price_date=$this->model_homepage->get_price_date($fruit_id);			
 		$date=date("Y-m-d", strtotime("-6 days"));
 		if(empty($price_date)){
-			$latest_price=intval($this->model_homepage->get_latest_price($fruit_id, $date));
+			$latest_price=$this->model_homepage->get_latest_price($fruit_id, $date);
 			for($i=0; $i<7; $i++) $array['prices'][]=$latest_price;
 		}
 		else{
 			if(count($price_date) != 7){	// pad values
 				$last_price=0;
 				if($date < $price_date[0]->date){
-					$latest_price=intval($this->model_homepage->get_latest_price($fruit_id, $date));
+					$latest_price=$this->model_homepage->get_latest_price($fruit_id, $date);
 				}
 				for($i=0; $i<count($price_date); $i++){
 					while($price_date[$i]->date != $date && count($array['prices'])<7){
@@ -65,7 +65,7 @@ class Homepage extends CI_Controller {
 						$date=date("Y-m-d", strtotime($date . "+1 day"));
 					}
 					if($price_date[$i]->date == $date){
-						$last_price=intval($price_date[$i]->price);
+						$last_price=$price_date[$i]->price;
 						$array['prices'][]=$last_price;
 					}
 					$date=date("Y-m-d", strtotime($date . "+1 day"));
