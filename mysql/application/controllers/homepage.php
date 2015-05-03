@@ -74,6 +74,11 @@ class Homepage extends CI_Controller {
 					$array['prices'][]=$last_price;
 				}
 			}
+			else{
+				for($i=0; $i<7; $i++){
+					$array['prices'][]=$price_date[$i]->price;
+				}
+			}
 		}
 		echo json_encode($array);		// final prices for the last 7 days
 	}

@@ -86,7 +86,9 @@ $(document).ready( function() {
 			dataType: 'json',
 
 			success: function(values) {
+				$('#highcharts').html(values);
 				var price=new Array()
+				// return;
 				for(var i=0; i<values.prices.length; i++){
 					price.push(parseInt(values.prices[i]));
 				}
