@@ -84,7 +84,7 @@ class Model_homepage extends CI_Model {
     	$qty = $input['edit-fruit-quantity'];
 
     	$doc->name = $name;
-    	$doc->price = (int)$price;
+    	$doc->price = $doc->price .",". $price;
     	$doc->dist = $dist;
     	$doc->qty = (int)$qty;
 
@@ -110,4 +110,9 @@ class Model_homepage extends CI_Model {
 
 		return;
 	}
+
+	// function get_price($id){
+	// 	$doc = $this->couchdb->getDoc($id);
+	// 	return $doc['price'];
+	// }
 }
