@@ -32,5 +32,25 @@
 			$query=$this->db->query("DELETE FROM `fruit` where `id`=".$id);
 			return;
 		}
+
+		public function get_price_date($id){
+			$query=$this->db->query("SELECT `price`, `date` FROM `fruitprice` where `id`=".$id." and `date` between DATE_SUB(NOW(), INTERVAL 1 WEEK) and NOW()") or die(mysqli_error());
+			// var_dump($query->result());
+			return $query->result();
+		}
+
+		public function get_latest_price($fruit_id, $date = NULL){
+			if($date == NULL){
+				$query=$this->db->query("SELECT `price`, max(`date`) FROM `fruitprice` where `id`=".$fruit_id) or die(mysqli_error());
+				// var_dump($query->result());
+				return $query->result()[0]->price;
+			}
+			$query=$this->db->query("SELECT `price`, max(`date`) FROM `fruitprice` where `id`=".$fruit_id." and `date` < ".$date) or die(mysqli_error());
+			// echo "late";
+			// var_dump($query->result());
+			// var_dump($query->result()[0]->price);
+			if($query->result()[0]->price == null) return 0;
+			return $query->result()[0]->price;
+		}
 	}
 ?>
