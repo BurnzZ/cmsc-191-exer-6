@@ -36,8 +36,8 @@ class Homepage extends CI_Controller {
 		redirect(base_url(), 'refresh');
 	}
 
-	public function deleteFruits(){
-		$this->model_homepage->delete_fruit($this->input->post());
+	public function deleteFruits($fruit_id){
+		$this->model_homepage->delete_fruit($fruit_id);
 		redirect(base_url(), 'refresh');
 	}
 }

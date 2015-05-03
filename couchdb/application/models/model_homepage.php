@@ -7,10 +7,10 @@ class Model_homepage extends CI_Model {
         parent::__construct();
     }
 
-    function getLastId(){
-    	$doc = $this->couchdb->getAllDocs();
-    	return $doc['total_rows'];
-    }
+    // function getLastId(){
+    // 	$doc = $this->couchdb->getAllDocs();
+    // 	return $doc['total_rows'];
+    // }
 
     function getAll() {
 
@@ -48,34 +48,45 @@ class Model_homepage extends CI_Model {
     }
 
     function add_fruit($input){
+    	$doc1 = $this->couchdb->getAllDocs();
+    	
     	$doc = new stdClass();
-    	$doc['id'] = getLastId();
-    	$doc['name'] = $input['new-fruit-name'];
-    	$doc['price'] = $input['new-fruit-price'];
-    	$doc['dist'] = $input['new-fruit-dist'];
-    	$doc['qty'] = $input['new-fruit-qty'];
+    	$doc1 = (array)$doc1;
 
+    	$count = $doc1['total_rows']+1;	
+    	$name = $input['new-fruit-name'];
+    	$price = $input['new-fruit-price'];
+    	$dist = $input['new-fruit-distributor'];
+    	$qty = $input['new-fruit-quantity'];
+
+    	$doc->_id = "" .$count. "";
+    	$doc->name = $name;
+    	$doc->price = (int)$price;
+    	$doc->dist = $dist;
+    	$doc->qty = (int)$qty;
     	try {
-    		$this->couchdb->storeDoc($doc);
+    		$response = $this->couchdb->storeDoc($doc);
     	} catch (Exception $e) {
         echo "Something weird happened: ".$e->getMessage()." (errcode=".$e->getCode().")\n";
         exit(1);
 		}
 		echo "The document is stored. CouchDB response body: ".print_r($response,true)."\n";
-    	
-    	$i++;
 
     	return;
     }
 
     function edit_fruit($input){
-    	$doc = $this->couchdb->getDoc($input['id']);
+    	$doc = $this->couchdb->getDoc($input['edit-fruit-id']);
 
-    	$doc['id'] = $input->id;	//getLastId();
-    	$doc['name'] = $input['edit-fruit-name'];
-    	$doc['price'] = $input['edit-fruit-price'];
-    	$doc['dist'] = $input['edit-fruit-dist'];
-    	$doc['qty'] = $input['edit-fruit-qty'];
+    	$name = $input['edit-fruit-name'];
+    	$price = $input['edit-fruit-price'];
+    	$dist = $input['edit-fruit-distributor'];
+    	$qty = $input['edit-fruit-quantity'];
+
+    	$doc->name = $name;
+    	$doc->price = (int)$price;
+    	$doc->dist = $dist;
+    	$doc->qty = (int)$qty;
 
     	try {
 	    	$this->couchdb->storeDoc($doc);
@@ -86,8 +97,9 @@ class Model_homepage extends CI_Model {
     	return;
     }
 
-    function delete_fruit($input){
-    	$doc = $this->couchdb->getDoc($input['id']);
+    function delete_fruit($id){
+    	$doc = $this->couchdb->getDoc($id);
+    	
     	try {
 			$result = $this->couchdb->deleteDoc($doc);
 		} catch (Exception $e) {
@@ -95,5 +107,7 @@ class Model_homepage extends CI_Model {
 			exit(1);
 		}
 		echo "Document deleted, CouchDB response body: ".print_r($result,true)."\n";
+
+		return;
 	}
 }

@@ -39,6 +39,7 @@ $(document).ready( function() {
 		var id = $(this).parent().parent().attr('id');
 		
 		var form = '<form id="form-edit" method="post" action="index.php/homepage/editFruits"> \
+				<input type="hidden" id="edit-fruit-id" name="edit-fruit-id" value="'+id+'"> \
 				<div class="field"> \
 					<label for="edit-fruit-name">Fruit Name</label> \
 					<input type="text" id="edit-fruit-name" name="edit-fruit-name" required> \
@@ -75,6 +76,7 @@ $(document).ready( function() {
 
 		
 		var id = $(this).parent().parent().attr('id');
+		var name1 = $(this).parent().parent().children('.fruit-name').text();
 
 		$('#highcharts').highcharts({
 	        chart: {
@@ -84,7 +86,7 @@ $(document).ready( function() {
 	            text: 'Fruit Price'
 	        },
 	        subtitle: {
-	            text: 'Banana Price over the last days'
+	            text: name1+ ' Price over the last days'
 	        },
 	        xAxis: {
 	            allowDecimals: false,
@@ -123,7 +125,7 @@ $(document).ready( function() {
 	            }
 	        },
 	        series: [{
-	            name: 'Banana',
+	            name: name1,
 	            data: [20, 50, 20, 30, 20, 25, 30],
 	            pointStart: Date.UTC(2015, 3, 26),	// put current date here
         		pointInterval: 24 * 3600 * 1000 // one day
@@ -135,7 +137,7 @@ $(document).ready( function() {
 
 		// gets the id of the fruit
 		var id = $(this).parent().parent().attr('id')
-
-		alert("clicked DELETE on id=" + id);
+		window.document.location = base_url+"homepage/deleteFruits/"+id;
+		//alert("clicked DELETE on id=" + id);
 	});
 });
