@@ -77,6 +77,9 @@ $(document).ready( function() {
 		var name=secparent.children('.fruit-name').text();
 		var id = secparent.attr('id');
 
+		var lastweek = new Date();
+		lastweek.setDate(lastweek.getDate() - 6);
+		console.log(lastweek);
 		$.ajax({
 			type: "POST",
 			url: base_url + 'homepage/get_price/'+id,
@@ -138,7 +141,7 @@ $(document).ready( function() {
 					series: [{
 						name: name,
 						data: price,
-						pointStart: Date.UTC(2015, 3, 26),	// put current date here
+						pointStart: Date.UTC(lastweek.getFullYear(), lastweek.getMonth(), lastweek.getDate()),	// put current date here
 						pointInterval: 24 * 3600 * 1000 // one day
 					}]
 				});
