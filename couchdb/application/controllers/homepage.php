@@ -40,6 +40,10 @@ class Homepage extends CI_Controller {
 		$this->model_homepage->delete_fruit($fruit_id);
 		redirect(base_url(), 'refresh');
 	}
+
+	public function getPrices($fruit_id){
+		$this->model_homepage->get_prices($fruit_id);
+	}
 }
 
 /* End of file welcome.php */

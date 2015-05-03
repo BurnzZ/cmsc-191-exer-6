@@ -78,59 +78,71 @@ $(document).ready( function() {
 		var id = $(this).parent().parent().attr('id');
 		var name1 = $(this).parent().parent().children('.fruit-name').text();
 
-		$('#highcharts').highcharts({
-	        chart: {
-	            type: 'area'
-	        },
-	        title: {
-	            text: 'Fruit Price'
-	        },
-	        subtitle: {
-	            text: name1+ ' Price over the last days'
-	        },
-	        xAxis: {
-	            allowDecimals: false,
-	            labels: {
-	                formatter: function () {
-	                    return Highcharts.dateFormat('%d %b', this.value);
-	                }
-	            }
-	        },
-	        yAxis: {
-	            title: {
-	                text: 'Price in Pesos'
-	            },
-	            labels: {
-	                formatter: function () {
-	                    return this.value;
-	                }
-	            }
-	        },
-	        tooltip: {
-	            pointFormat: '{series.name} priced at <b>{point.y:,.0f}</b><br/>at {point.x}'
-	        },
-	        plotOptions: {
-	            area: {
-	                pointStart: 2015,
-	                marker: {
-	                    enabled: false,
-	                    symbol: 'circle',
-	                    radius: 2,
-	                    states: {
-	                        hover: {
-	                            enabled: true
-	                        }
-	                    }
-	                }
-	            }
-	        },
-	        series: [{
-	            name: name1,
-	            data: [20, 50, 20, 30, 20, 25, 30],
-	            pointStart: Date.UTC(2015, 3, 26),	// put current date here
-        		pointInterval: 24 * 3600 * 1000 // one day
-	        }]
-	    });
+		$.ajax({
+			type: "POST",
+			url: 'index.php/homepage/getPrices/'+id,
+			//dataType: 'json',
+			success: function(){
+				console.log($doc['price']),
+
+			$('#highcharts').highcharts({
+		        chart: {
+		            type: 'area'
+		        },
+		        title: {
+		            text: 'Fruit Price'
+		        },
+		        subtitle: {
+		            text: name1+ ' Price over the last days'
+		        },
+		        xAxis: {
+		            allowDecimals: false,
+		            labels: {
+		                formatter: function () {
+		                    return Highcharts.dateFormat('%d %b', this.value);
+		                }
+		            }
+		        },
+		        yAxis: {
+		            title: {
+		                text: 'Price in Pesos'
+		            },
+		            labels: {
+		                formatter: function () {
+		                    return this.value;
+		                }
+		            }
+		        },
+		        tooltip: {
+		            pointFormat: '{series.name} priced at <b>{point.y:,.0f}</b><br/>at {point.x}'
+		        },
+		        plotOptions: {
+		            area: {
+		                pointStart: 2015,
+		                marker: {
+		                    enabled: false,
+		                    symbol: 'circle',
+		                    radius: 2,
+		                    states: {
+		                        hover: {
+		                            enabled: true
+		                        }
+		                    }
+		                }
+		            }
+		        },
+		        series: [{
+		            name: name1,
+		            data: [ +$doc['price']+ ],
+		            pointStart: Date.UTC(2015, 4, 3),	// put current date here
+	        		pointInterval: 24 * 3600 * 1000 // one day
+		        }]
+		    });
+			},
+			error: function(err) {
+				$("#highcharts").html(err);
+			}
+		});
 	});
 
 	$('.btn-delete').on('click', function() {
