@@ -11,6 +11,10 @@
 	<script type="text/javascript" src="./assets/js/main.js"></script>
 	<script type="text/javascript" src="./assets/js/jquery-modal/jquery.modal.js"></script>
 	<script type="text/javascript" src="./assets/js/custom-highcharts.js"></script>
+	<script>
+		var base_url="<?php echo base_url(); ?>";
+	</script>
+
 </head>
 <body>
 
