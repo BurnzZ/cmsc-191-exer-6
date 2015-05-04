@@ -6,7 +6,7 @@ class Model_homepage extends CI_Model {
     function __construct(){
         parent::__construct();
     }
-    
+
     function getAll() {
 
 		try {
@@ -25,6 +25,9 @@ class Model_homepage extends CI_Model {
 
 		$fruits = array();
 
+        date_default_timezone_set('UTC');
+        $today = mdate('%Y-%m-%d', now());
+
 		for($i=0; $i<$doc['total_rows']; $i++){
 			$data = (array)$doc['rows'][$i];
 
@@ -32,7 +35,7 @@ class Model_homepage extends CI_Model {
 			
 			$row = array(	'id' => $mydata->_id,
 							'name' => $mydata->name,
-							'price' => $mydata->price,
+							'price' => $mydata->price->$today,
 							'dist' => $mydata->dist,
 							'qty' => $mydata->qty);
 
@@ -54,9 +57,13 @@ class Model_homepage extends CI_Model {
     	$dist = $input['new-fruit-distributor'];
     	$qty = $input['new-fruit-quantity'];
 
+        date_default_timezone_set('UTC');
+        $today = mdate('%Y-%m-%d', now());
+
     	$doc->_id = "" .$count. "";
     	$doc->name = $name;
-    	$doc->price = (int)$price;
+    	$doc->price = array($today => $price);
+
     	$doc->dist = $dist;
     	$doc->qty = (int)$qty;
     	try {
@@ -78,8 +85,16 @@ class Model_homepage extends CI_Model {
     	$dist = $input['edit-fruit-distributor'];
     	$qty = $input['edit-fruit-quantity'];
 
+        date_default_timezone_set('UTC');
+        $today = mdate('%Y-%m-%d', now());
+
+        /* code for testing data */
+        // date_default_timezone_set('UTC');
+        // $now = now() - (4 * 24 * 3600);
+        // $today = mdate('%Y-%m-%d', $now);
+
     	$doc->name = $name;
-    	$doc->price = $doc->price .",". $price;
+    	$doc->price->$today = $price;
     	$doc->dist = $dist;
     	$doc->qty = (int)$qty;
 

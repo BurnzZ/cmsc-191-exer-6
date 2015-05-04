@@ -124,8 +124,8 @@ $(document).ready( function() {
 		        },
 		        series: [{
 		            name: name1,
-		            data: [20,22],
-		            pointStart: Date.UTC(2015, 4, 4),	// put current date here
+		            data: [20,22,100, 0, 123, 123, 123],
+		            pointStart: Date.UTC(2015, 4, 5),	// put current date here
 	        		pointInterval: 24 * 3600 * 1000 // one day
 		        }]
 		    });

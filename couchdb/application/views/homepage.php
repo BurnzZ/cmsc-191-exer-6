@@ -76,22 +76,6 @@
 
 			?>
 
-			<!-- <article class="fruit" id="1">
-				<header class="fruit-name">APPLE</header>
-
-				<section class="fruit-details">
-					<div class="fruit-quantity">10</div>
-					<div class="fruit-distributor">del Monte</div>
-				</section>
-
-				<section class="fruit-mods">
-					<div class="btn-edit"><a class="modal-link" href="#modal-edit" rel="modal:open">EDIT</a></div>
-					<div class="btn-prices"><a class="modal-link" href="#modal-prices" rel="modal:open">PRICES</a></div>
-					<div class="btn-delete">DELETE</div>
-				</section>
-			</article> -->
-
-
 			<!-- Modal for when clicking ADD FRUIT -->
 			<div id="modal-add" style="display:none;"></div>
 
