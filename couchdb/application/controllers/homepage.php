@@ -17,9 +17,36 @@ class Homepage extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{
-		$this->load->view('homepage');
+	public function index() {
+
+		$fruits = $this->model_homepage->getAll();
+
+		$data['fruits'] = $fruits;
+
+		$this->load->view('homepage', $data);
+	}
+
+	public function addFruits(){
+		$this->model_homepage->add_fruit($this->input->post());
+		redirect(base_url(), 'refresh');
+	}
+
+	public function getPrices() {
+
+		$id = $this->input->post('id');
+
+		$data =	$this->model_homepage->get_prices_of_fruit($id);
+		echo json_encode($data);
+	}
+
+	public function editFruits(){
+		$this->model_homepage->edit_fruit($this->input->post());
+		redirect(base_url(), 'refresh');
+	}
+
+	public function deleteFruits($fruit_id){
+		$this->model_homepage->delete_fruit($fruit_id);
+		redirect(base_url(), 'refresh');
 	}
 }
 
