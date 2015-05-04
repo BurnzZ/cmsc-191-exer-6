@@ -6,12 +6,7 @@ class Model_homepage extends CI_Model {
     function __construct(){
         parent::__construct();
     }
-
-    // function getLastId(){
-    // 	$doc = $this->couchdb->getAllDocs();
-    // 	return $doc['total_rows'];
-    // }
-
+    
     function getAll() {
 
 		try {
@@ -70,7 +65,7 @@ class Model_homepage extends CI_Model {
         echo "Something weird happened: ".$e->getMessage()." (errcode=".$e->getCode().")\n";
         exit(1);
 		}
-		echo "The document is stored. CouchDB response body: ".print_r($response,true)."\n";
+		// echo "The document is stored. CouchDB response body: ".print_r($response,true)."\n";
 
     	return;
     }
@@ -106,7 +101,7 @@ class Model_homepage extends CI_Model {
 			echo "Something weird happened: ".$e->getMessage()." (errcode=".$e->getCode().")\n";
 			exit(1);
 		}
-		echo "Document deleted, CouchDB response body: ".print_r($result,true)."\n";
+		// echo "Document deleted, CouchDB response body: ".print_r($result,true)."\n";
 
 		return;
 	}

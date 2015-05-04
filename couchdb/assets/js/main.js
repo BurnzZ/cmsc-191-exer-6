@@ -135,7 +135,6 @@ $(document).ready( function() {
 
 		// gets the id of the fruit
 		var id = $(this).parent().parent().attr('id')
-		window.document.location = base_url+"homepage/deleteFruits/"+id;
-		//alert("clicked DELETE on id=" + id);
+		window.document.location = "index.php/homepage/deleteFruits/"+id;
 	});
 });
