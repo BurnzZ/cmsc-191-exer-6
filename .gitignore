@@ -8,6 +8,11 @@ ehthumbs.db
 # Folder config file
 Desktop.ini
 
+/mysql/application/config/database.php
+/couchdb/application/config/database.php
+/mongodb/application/config/database.php
+
+
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
