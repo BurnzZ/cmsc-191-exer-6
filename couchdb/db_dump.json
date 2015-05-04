@@ -1,6 +1,6 @@
 {"total_rows":5,"offset":0,"rows":[
-{"id":"1","key":"1","value":{"rev":"2-140b3d1f4a5e3f7912371f8b8e2a52ce"},"doc":{"_id":"1","_rev":"2-140b3d1f4a5e3f7912371f8b8e2a52ce","name":"Apple","price":20,"qty":5,"dist":"ABC"}},
-{"id":"2","key":"2","value":{"rev":"2-78f7eafb502c2180075b13b4153750f9"},"doc":{"_id":"2","_rev":"2-78f7eafb502c2180075b13b4153750f9","dist":"Grove","name":"Guava","price":24,"qty":8}},
+{"id":"1","key":"1","value":{"rev":"2-140b3d1f4a5e3f7912371f8b8e2a52ce"},"doc":{"_id":"1","_rev":"2-140b3d1f4a5e3f7912371f8b8e2a52ce","name":"Apple","price": "20,22","qty":5,"dist":"ABC"}},
+{"id":"2","key":"2","value":{"rev":"2-78f7eafb502c2180075b13b4153750f9"},"doc":{"_id":"2","_rev":"2-78f7eafb502c2180075b13b4153750f9","dist":"Grove","name":"Guava","price":"24,11,143","qty":8}},
 {"id":"3","key":"3","value":{"rev":"1-103cee11c31b4270002a071df3e6b5af"},"doc":{"_id":"3","_rev":"1-103cee11c31b4270002a071df3e6b5af","name":"Grapes","price":40,"qty":19,"dist":"Savemore"}},
 {"id":"4","key":"4","value":{"rev":"1-384d7ce6a3b4d5ada95bf76ebe131ece"},"doc":{"_id":"4","_rev":"1-384d7ce6a3b4d5ada95bf76ebe131ece","dist":"Star","name":"Pineapple","price":25,"qty":4}},
 {"id":"5","key":"5","value":{"rev":"1-9b44e661dfa907ae63d4c6bc455d0070"},"doc":{"_id":"5","_rev":"1-9b44e661dfa907ae63d4c6bc455d0070","dist":"Savemore","name":"Mango","price":30.5,"qty":null}}
