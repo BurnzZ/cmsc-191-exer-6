@@ -64,7 +64,7 @@ $autoload['libraries'] = array();
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url');
+$autoload['helper'] = array('url', 'date');
 
 
 /*
@@ -109,8 +109,9 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array();
+$autoload['model'] = array('model_homepage');
 
+$autoload['libraries'] = array('couchdb');
 
 /* End of file autoload.php */
 /* Location: ./application/config/autoload.php */

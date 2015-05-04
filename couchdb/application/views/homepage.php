@@ -11,6 +11,10 @@
 	<script type="text/javascript" src="./assets/js/main.js"></script>
 	<script type="text/javascript" src="./assets/js/jquery-modal/jquery.modal.js"></script>
 	<script type="text/javascript" src="./assets/js/custom-highcharts.js"></script>
+	<script>
+		var base_url="<?php echo base_url(); ?>";
+	</script>
+
 </head>
 <body>
 
@@ -49,95 +53,28 @@
 				 and just has to be populated from the controller to the view.
 			-->
 
-			<article class="fruit" id="1">
-				<header class="fruit-name">APPLE</header>
+			<?php
 
-				<section class="fruit-details">
-					<div class="fruit-quantity">10</div>
-					<div class="fruit-distributor">del Monte</div>
-				</section>
+				foreach ($fruits as $fruit) {
+					echo '<article class="fruit" id="' . $fruit['id'] . '">';
+						echo '<header class="fruit-name">' . $fruit['name'] . '</header>';
 
-				<section class="fruit-mods">
-					<div class="btn-edit"><a class="modal-link" href="#modal-edit" rel="modal:open">EDIT</a></div>
-					<div class="btn-prices"><a class="modal-link" href="#modal-prices" rel="modal:open">PRICES</a></div>
-					<div class="btn-delete">DELETE</div>
-				</section>
-			</article>
+						echo '<section class="fruit-details">';
+							echo '<div class="fruit-quantity">' . $fruit['qty'] . '</div>';
+							echo '<div class="fruit-distributor">' . $fruit['dist'] . '</div>';
+							echo '<div class="fruit-prices">' . "Price: " .$fruit['price'] . '</div>';
+						echo '</section>';
 
-			<article class="fruit" id="2">
-				<header class="fruit-name">Banana</header>
+						echo '<section class="fruit-mods">';
+							echo '<div class="btn-edit"><a class="modal-link" href="#modal-edit" rel="modal:open">EDIT</a></div>';
+							echo '<div class="btn-prices"><a class="modal-link" href="#modal-prices" rel="modal:open">PRICES</a></div>';
+							echo '<div class="btn-delete">DELETE</div>';
+						echo '</section>';
 
-				<section class="fruit-details">
-					<div class="fruit-quantity">9</div>
-					<div class="fruit-distributor">dun sa may Grove</div>
-				</section>
+					echo '</article>';
+				}
 
-				<section class="fruit-mods">
-					<div class="btn-edit"><a class="modal-link" href="#modal-edit" rel="modal:open">EDIT</a></div>
-					<div class="btn-prices"><a class="modal-link" href="#modal-prices" rel="modal:open">PRICES</a></div>
-					<div class="btn-delete">DELETE</div>
-				</section>
-			</article>
-
-			<article class="fruit" id="3">
-				<header class="fruit-name">Grapes</header>
-
-				<section class="fruit-details">
-					<div class="fruit-quantity">8</div>
-					<div class="fruit-distributor">Savemore</div>
-				</section>
-
-				<section class="fruit-mods">
-					<div class="btn-edit"><a class="modal-link" href="#modal-edit" rel="modal:open">EDIT</a></div>
-					<div class="btn-prices"><a class="modal-link" href="#modal-prices" rel="modal:open">PRICES</a></div>
-					<div class="btn-delete">DELETE</div>
-				</section>
-			</article>
-
-			<article class="fruit" id="4">
-				<header class="fruit-name">Guyabano</header>
-
-				<section class="fruit-details">
-					<div class="fruit-quantity">7</div>
-					<div class="fruit-distributor">Fruits pa More</div>
-				</section>
-
-				<section class="fruit-mods">
-					<div class="btn-edit"><a class="modal-link" href="#modal-edit" rel="modal:open">EDIT</a></div>
-					<div class="btn-prices"><a class="modal-link" href="#modal-prices" rel="modal:open">PRICES</a></div>
-					<div class="btn-delete">DELETE</div>
-				</section>
-			</article>
-
-			<article class="fruit" id="5">
-				<header class="fruit-name">Kiwi</header>
-
-				<section class="fruit-details">
-					<div class="fruit-quantity">6</div>
-					<div class="fruit-distributor">weeeee</div>
-				</section>
-
-				<section class="fruit-mods">
-					<div class="btn-edit"><a class="modal-link" href="#modal-edit" rel="modal:open">EDIT</a></div>
-					<div class="btn-prices"><a class="modal-link" href="#modal-prices" rel="modal:open">PRICES</a></div>
-					<div class="btn-delete">DELETE</div>
-				</section>
-			</article>
-
-			<article class="fruit" id="6">
-				<header class="fruit-name">Fruit Salad</header>
-
-				<section class="fruit-details">
-					<div class="fruit-quantity">5</div>
-					<div class="fruit-distributor">Mic test</div>
-				</section>
-
-				<section class="fruit-mods">
-					<div class="btn-edit"><a class="modal-link" href="#modal-edit" rel="modal:open">EDIT</a></div>
-					<div class="btn-prices"><a class="modal-link" href="#modal-prices" rel="modal:open">PRICES</a></div>
-					<div class="btn-delete">DELETE</div>
-				</section>
-			</article>
+			?>
 
 			<!-- Modal for when clicking ADD FRUIT -->
 			<div id="modal-add" style="display:none;"></div>
