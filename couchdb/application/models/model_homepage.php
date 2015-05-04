@@ -111,8 +111,4 @@ class Model_homepage extends CI_Model {
 		return;
 	}
 
-	function get_price($id){
-		$doc = $this->couchdb->getDoc($id);
-		return $doc['price'];
-	}
 }

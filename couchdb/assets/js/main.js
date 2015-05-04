@@ -73,18 +73,9 @@ $(document).ready( function() {
 	});
 
 	$('.btn-prices').on('click', function() {
-
-		
 		var id = $(this).parent().parent().attr('id');
 		var name1 = $(this).parent().parent().children('.fruit-name').text();
-
-		$.ajax({
-			type: "POST",
-			url: 'index.php/homepage/getPrices/'+id,
-			//dataType: 'json',
-			success: function(){
-				console.log($doc['price']),
-
+	
 			$('#highcharts').highcharts({
 		        chart: {
 		            type: 'area'
@@ -133,16 +124,11 @@ $(document).ready( function() {
 		        },
 		        series: [{
 		            name: name1,
-		            data: [ +$doc['price']+ ],
-		            pointStart: Date.UTC(2015, 4, 3),	// put current date here
+		            data: [20,22],
+		            pointStart: Date.UTC(2015, 4, 4),	// put current date here
 	        		pointInterval: 24 * 3600 * 1000 // one day
 		        }]
 		    });
-			},
-			error: function(err) {
-				$("#highcharts").html(err);
-			}
-		});
 	});
 
 	$('.btn-delete').on('click', function() {

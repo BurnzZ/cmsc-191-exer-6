@@ -62,6 +62,7 @@
 						echo '<section class="fruit-details">';
 							echo '<div class="fruit-quantity">' . $fruit['qty'] . '</div>';
 							echo '<div class="fruit-distributor">' . $fruit['dist'] . '</div>';
+							echo '<div class="fruit-prices">' . "Price: " .$fruit['price'] . '</div>';
 						echo '</section>';
 
 						echo '<section class="fruit-mods">';
