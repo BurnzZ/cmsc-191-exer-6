@@ -45,6 +45,11 @@ class Model_homepage extends CI_Model {
 		return $fruits;
     }
 
+    function get_prices_of_fruit($id) {
+        $doc = $this->couchdb->getDoc($id);
+        return $doc->price;
+    }
+
     function add_fruit($input){
     	$doc1 = $this->couchdb->getAllDocs();
     	

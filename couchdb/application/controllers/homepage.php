@@ -31,6 +31,14 @@ class Homepage extends CI_Controller {
 		redirect(base_url(), 'refresh');
 	}
 
+	public function getPrices() {
+
+		$id = $this->input->post('id');
+
+		$data =	$this->model_homepage->get_prices_of_fruit($id);
+		echo json_encode($data);
+	}
+
 	public function editFruits(){
 		$this->model_homepage->edit_fruit($this->input->post());
 		redirect(base_url(), 'refresh');

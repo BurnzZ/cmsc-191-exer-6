@@ -74,62 +74,96 @@ $(document).ready( function() {
 
 	$('.btn-prices').on('click', function() {
 		var id = $(this).parent().parent().attr('id');
-		var name1 = $(this).parent().parent().children('.fruit-name').text();
+		var fruitname = $(this).parent().parent().children('.fruit-name').text();
 	
-			$('#highcharts').highcharts({
-		        chart: {
-		            type: 'area'
-		        },
-		        title: {
-		            text: 'Fruit Price'
-		        },
-		        subtitle: {
-		            text: name1+ ' Price over the last days'
-		        },
-		        xAxis: {
-		            allowDecimals: false,
-		            labels: {
-		                formatter: function () {
-		                    return Highcharts.dateFormat('%d %b', this.value);
-		                }
-		            }
-		        },
-		        yAxis: {
-		            title: {
-		                text: 'Price in Pesos'
-		            },
-		            labels: {
-		                formatter: function () {
-		                    return this.value;
-		                }
-		            }
-		        },
-		        tooltip: {
-		            pointFormat: '{series.name} priced at <b>{point.y:,.0f}</b><br/>at {point.x}'
-		        },
-		        plotOptions: {
-		            area: {
-		                pointStart: 2015,
-		                marker: {
-		                    enabled: false,
-		                    symbol: 'circle',
-		                    radius: 2,
-		                    states: {
-		                        hover: {
-		                            enabled: true
-		                        }
-		                    }
-		                }
-		            }
-		        },
-		        series: [{
-		            name: name1,
-		            data: [20,22,100, 0, 123, 123, 123],
-		            pointStart: Date.UTC(2015, 4, 5),	// put current date here
-	        		pointInterval: 24 * 3600 * 1000 // one day
-		        }]
-		    });
+	
+		$.ajax({
+			type: "POST",
+			url: "index.php/homepage/getPrices",
+			dataType: 'json',
+			data: {id: id},
+			success: function(priceObj) {
+
+				var prices = [];
+				var date;
+
+				keys = [];
+				for(var p in priceObj)
+					keys.push(p);
+
+				// get start date at the end of the list
+				// coz they're decrementing
+				pStart = keys[keys.length-1];
+				pStart = pStart.split('-');
+
+				// creates dateObj for pointStart in Highcharts
+				// 2nd arg has -1 since months in javascript starts in 0
+				date = Date.UTC(parseInt(pStart[0]), parseInt(pStart[1])-1, parseInt(pStart[2]));
+
+				// form the prices in ascending order
+				// loop is descending since prices are inverted
+				for (var i = keys.length-1; i >= 0; i--)
+					prices.push(parseInt(priceObj[keys[i]]));
+
+
+				$('#highcharts').highcharts({
+			        chart: {
+			            type: 'area'
+			        },
+			        title: {
+			            text: 'Fruit Price'
+			        },
+			        subtitle: {
+			            text: fruitname + ' Price over the last days'
+			        },
+			        xAxis: {
+			            type: 'date',
+			            tickInterval: 24 * 3600 * 1000,
+			            labels: {
+			                formatter: function () {
+			                    return Highcharts.dateFormat('%d %b', this.value);
+			                }
+			            }
+			        },
+			        yAxis: {
+			            title: {
+			                text: 'Price in Pesos'
+			            },
+			            labels: {
+			                formatter: function () {
+			                    return this.value;
+			                }
+			            }
+			        },
+			        tooltip: {
+			            pointFormat: '{point.y}'
+			        },
+			        plotOptions: {
+			            area: {
+			        		pointStart: date,	// put current date here
+			                marker: {
+			                    enabled: false,
+			                    symbol: 'circle',
+			                    radius: 2,
+			                    states: {
+			                        hover: {
+			                            enabled: true
+			                        }
+			                    }
+			                }
+			            }
+			        },
+			        series: [{
+			            name: fruitname,
+			            data: prices,
+			        	pointInterval: 24 * 3600 * 1000, // one day
+			        }]
+			    });
+			}
+		});		
 	});
+
+
 
 	$('.btn-delete').on('click', function() {
 
