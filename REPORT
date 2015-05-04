@@ -1,0 +1,55 @@
+-----
+TITLE: Comparative Exercise on MongoDB, CouchDB and MySQL databases.
+-----
+
+---
+Author:
+---
+BERNAL, Kevin Lloyd H.
+<lagay nyo full-name nyo>
+<lagay nyo full-name nyo>
+<lagay nyo full-name nyo>
+
+
+The exercise was to make a web application with a basic CRUD interface for managing different types of fruits.
+
+Each fruit has to contain details like:
+    - name
+    - quantity
+    - distributor
+    - price (this changes everyday and history of changes must be saved)
+
+
+----
+IMPLEMENTATION
+----
+
+A front-end boilerplate was made to have a uniform interface across all databases, as well as to speedup the coding process. A CodeIgniter PHP-framework was used in the Back-end.
+
+Each database implementation has their own dedicated project folder, which are independent from one another.
+
+
+A. MySQL
+
+<write how implementation was done here>
+
+
+B. MongoDB
+
+<write how implementation was done here>
+
+
+C. CouchDB
+
+A database named `myfruit` was made, with each of its document representing a distinct fruit having the details mentioned above as its data items.
+
+However, the price contains a dictionary which contains the date (represented in the format: Y-m-d) as the key, while the price for that specific date as its value.
+
+
+
+----
+Misc
+----
+
+The price changes for each day is represented by the javascript library called Highcharts.
+
