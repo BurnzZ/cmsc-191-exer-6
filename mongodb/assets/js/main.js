@@ -45,6 +45,11 @@ $(document).ready( function() {
 				</div> \
 				\
 				<div class="field"> \
+					<label for="edit-fruit-id">Fruit ID</label> \
+					<input type="text" id="edit-fruit-id" name="edit-fruit-id" readonly> \
+				</div> \
+				\
+				<div class="field"> \
 					<label for="edit-fruit-quantity">Quantity</label> \
 					<input type="text" id="edit-fruit-quantity" name="edit-fruit-quantity" required> \
 				</div> \
@@ -67,75 +72,106 @@ $(document).ready( function() {
 		$('#modal-edit').html(form);
 
 		$('#modal-edit #edit-fruit-name').val( $('#'+id+' .fruit-name').text() );
+		$('#modal-edit #edit-fruit-id').val( $('#'+id+' .fruit-id').text() );
 		$('#modal-edit #edit-fruit-quantity').val( $('#'+id+' .fruit-quantity').text() );
 		$('#modal-edit #edit-fruit-distributor').val( $('#'+id+' .fruit-distributor').text() );
 	});
 
 	$('.btn-prices').on('click', function() {
 
-		
+		var fruitId = $(this).parent().parent().find('.fruit-id').text();
 		var id = $(this).parent().parent().attr('id');
+		var fruitName = $(this).parent().parent().find('.fruit-name').text();
+		var pricelist;
+		jQuery.ajax({
+			type: "POST",
+			url: "index.php/homepage/getPrices",
+			dataType: 'json',
+			fruitdata: {id: fruitId},
 
-		$('#highcharts').highcharts({
-	        chart: {
-	            type: 'area'
-	        },
-	        title: {
-	            text: 'Fruit Price'
-	        },
-	        subtitle: {
-	            text: 'Banana Price over the last days'
-	        },
-	        xAxis: {
-	            allowDecimals: false,
-	            labels: {
-	                formatter: function () {
-	                    return Highcharts.dateFormat('%d %b', this.value);
-	                }
-	            }
-	        },
-	        yAxis: {
-	            title: {
-	                text: 'Price in Pesos'
-	            },
-	            labels: {
-	                formatter: function () {
-	                    return this.value;
-	                }
-	            }
-	        },
-	        tooltip: {
-	            pointFormat: '{series.name} priced at <b>{point.y:,.0f}</b><br/>at {point.x}'
-	        },
-	        plotOptions: {
-	            area: {
-	                pointStart: 2015,
-	                marker: {
-	                    enabled: false,
-	                    symbol: 'circle',
-	                    radius: 2,
-	                    states: {
-	                        hover: {
-	                            enabled: true
-	                        }
-	                    }
-	                }
-	            }
-	        },
-	        series: [{
-	            name: 'Banana',
-	            data: [20, 50, 20, 30, 20, 25, 30],
-	            pointStart: Date.UTC(2015, 3, 26),	// put current date here
-        		pointInterval: 24 * 3600 * 1000 // one day
-	        }]
-	    });
+			success: function(fruitdata) {
+
+				var fruitdate = fruitdata[0];
+				fruitdate = fruitdate.split('-');
+
+				$('#highcharts').highcharts({
+			        chart: {
+			            type: 'area'
+			        },
+			        title: {
+			            text: 'Fruit Price'
+			        },
+			        subtitle: {
+			            text: fruitName + ' Price over the last days'
+			        },
+			        xAxis: {
+			            allowDecimals: false,
+			            labels: {
+			                formatter: function () {
+			                    return Highcharts.dateFormat('%d %b', this.value);
+			                }
+			            }
+			        },
+			        yAxis: {
+			            title: {
+			                text: 'Price in Pesos'
+			            },
+			            labels: {
+			                formatter: function () {
+			                    return this.value;
+			                }
+			            }
+			        },
+			        tooltip: {
+			            pointFormat: '{series.name} priced at <b>{point.y:,.0f}</b><br/>at {point.x}'
+			        },
+			        plotOptions: {
+			            area: {
+			                pointStart: 2015,
+			                marker: {
+			                    enabled: false,
+			                    symbol: 'circle',
+			                    radius: 2,
+			                    states: {
+			                        hover: {
+			                            enabled: true
+			                        }
+			                    }
+			                }
+			            }
+			        },
+			        series: [{
+			            name: 'Banana',
+			            data: fruitdata.slice(1,fruitdata.length),//fruitdata array index 0 as date then the rest is fruit list
+			            pointStart: Date.UTC(parseInt(fruitdate[0]), parseInt(fruitdate[1])-1, parseInt(fruitdate[2])),	// put current date here
+		        		pointInterval: 24 * 3600 * 1000 // one day
+			        }]
+			    });
+			},
+			error: function(err) {
+				console.log(err);
+			}
+		});
+
 	});
 
-	$('.btn-delete').on('click', function() {
+	$(".btn-delete").on('click', function(event) {
 
-		// gets the id of the fruit
-		var id = $(this).parent().parent().attr('id')
+		var fruitId = $(this).parent().parent().find('.fruit-id').text();
 
-		alert("clicked DELETE on id=" + id);
+		jQuery.ajax({
+			type: "POST",
+			url: "index.php/homepage/delete",
+			dataType: 'json',
+			data: {id: fruitId},
+
+			success: function(data) {
+				window.location = window.location;
+			},
+			error: function(err) {
+				console.log(err);
+			}
+		});
+
 	});
 });
