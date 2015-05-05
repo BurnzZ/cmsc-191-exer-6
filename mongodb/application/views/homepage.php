@@ -62,6 +62,7 @@
 					<section class="fruit-details">
 						<div class="fruit-quantity"><?php echo $fruit['qty'];?></div>
 						<div class="fruit-distributor"><?php echo $fruit['dist'];?></div>
+						<div class="fruit-price"><?php echo $fruit['price'];?></div>
 					</section>
 
 					<section class="fruit-mods">
