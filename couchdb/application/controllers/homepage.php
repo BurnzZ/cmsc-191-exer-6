@@ -18,8 +18,9 @@ class Homepage extends CI_Controller {
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index() {
-
+		// measure start
 		$fruits = $this->model_homepage->getAll();
+		// measure end
 
 		$data['fruits'] = $fruits;
 
@@ -27,7 +28,10 @@ class Homepage extends CI_Controller {
 	}
 
 	public function addFruits(){
+		// measure start
 		$this->model_homepage->add_fruit($this->input->post());
+		// measure end
+
 		redirect(base_url(), 'refresh');
 	}
 
@@ -35,17 +39,26 @@ class Homepage extends CI_Controller {
 
 		$id = $this->input->post('id');
 
+		// measure start
 		$data =	$this->model_homepage->get_prices_of_fruit($id);
+		// measure end
+
 		echo json_encode($data);
 	}
 
 	public function editFruits(){
+		// measure start
 		$this->model_homepage->edit_fruit($this->input->post());
+		// measure end
+
 		redirect(base_url(), 'refresh');
 	}
 
 	public function deleteFruits($fruit_id){
+		// measure start
 		$this->model_homepage->delete_fruit($fruit_id);
+		// measure end
+
 		redirect(base_url(), 'refresh');
 	}
 }

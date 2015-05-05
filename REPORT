@@ -21,7 +21,7 @@ Each fruit has to contain details like:
 
 
 ----
-IMPLEMENTATION
+IMPLEMENTATION and APPROACH
 ----
 
 A front-end boilerplate was made to have a uniform interface across all databases, as well as to speedup the coding process. A CodeIgniter PHP-framework was used in the Back-end.
@@ -31,19 +31,43 @@ Each database implementation has their own dedicated project folder, which are i
 
 A. MySQL
 
-<write how implementation was done here>
+Two separate tables were made, namely: `fruit` and `fruitprice`. The `fruit` table has the attributes: name, distributor, quantity and an ID. The fruit.ID refrences itself to the `fruitprice` table to determine a particular fruit's price history.
 
 
 B. MongoDB
 
-<write how implementation was done here>
+Same as the MySQL approach, two Collections were made, namely: `fruits` and `prices`. The same attributes from MySQL's `fruit` are in the MongoDB's `fruits` Collection, with the addition of currentPrices attribute. The Collection `prices` contain documents that pertain to a particular fruit's price history (same structure as with MySQL's).
 
 
 C. CouchDB
 
 A database named `myfruit` was made, with each of its document representing a distinct fruit having the details mentioned above as its data items.
 
-However, the price contains a dictionary which contains the date (represented in the format: Y-m-d) as the key, while the price for that specific date as its value.
+However, the price contains a dictionary which contains the date (represented inthe format: Y-m-d) as the key, while the price for that specific date as its value.
+
+
+---
+Relational vs. NoSQL
+---
+
+Relational Databases takes much more time to design and implement compared with NoSQL databases. Such that a lot of overhead times are needed for conceptualizing and planning the database structure, tables and attributes. After the Relational Database has been made, it's relatively harder for data to change, scale up and be up-to-date with new database changes.
+
+On the other hand, NoSQL databases takes no need for planning their structure and approach in designing and implementation. NoSQL databases can scale up relatively easier as their data increases in size and variety.
+
+
+---
+Execution Time: CouchDB vs. MongoDB
+---
+
+
+
+
+---
+Big Data: MySQL vs. CouchDB vs. MongoDB
+---
+
+
+
 
 
 
