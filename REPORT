@@ -6,9 +6,9 @@ TITLE: Comparative Exercise on MongoDB, CouchDB and MySQL databases.
 Author:
 ---
 BERNAL, Kevin Lloyd H.
-<lagay nyo full-name nyo>
-<lagay nyo full-name nyo>
-<lagay nyo full-name nyo>
+CASTRO, Randall Romeo T.
+DELA ROSA, Dyanara M.
+ORDILLANO, Janet P.
 
 
 The exercise was to make a web application with a basic CRUD interface for managing different types of fruits.
@@ -58,17 +58,37 @@ On the other hand, NoSQL databases takes no need for planning their structure an
 ---
 Execution Time: CouchDB vs. MongoDB
 ---
+[A single computer was used to record the tests]
+
+For this analytics, the microtime() PHP function was used to record a relatively accurate time up to the millisecond. A total of 10 runs were made for each test and each runs is rounded up to the 4th decimal digit:
 
 
+ADD FRUIT [10 runs]
+MongoDB: 0.01405 seconds
+CouchDB: 0.03658 seconds
+
+EDIT FRUIT: [10 runs]
+MongoDB: 0.00451 seconds
+CouchDB: 0.02076 seconds
+
+DELETE FRUIT: [10 runs]
+MongoDB: 0.00100 seconds
+CouchDB: 0.01622 seconds
+
+VIEW ALL FRUITS [10 fruits with 1 price history]
+MongoDB: 0.001 seconds
+CouchDB: 0.094 seconds 
 
 
 ---
 Big Data: MySQL vs. CouchDB vs. MongoDB
 ---
 
+Given the assumption that the data is increasing as well as having rapid updates, MongoDB would suit the job perfectly. Not to mention MongoDB's faster execution time in terms of simple queries.
 
+Being a Non-Relational Database, MongoDB has no problems when scaling up its structure and adding up heterogenous data types.
 
-
+However, MongoDB may feel the slower load in time if given a heavy load in its query, but still it's up to par with MySQL.
 
 
 ----
@@ -76,4 +96,5 @@ Misc
 ----
 
 The price changes for each day is represented by the javascript library called Highcharts.
+
 
