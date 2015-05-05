@@ -3,7 +3,7 @@ TITLE: Comparative Exercise on MongoDB, CouchDB and MySQL databases.
 -----
 
 ---
-Author:
+Authors:
 ---
 BERNAL, Kevin Lloyd H.
 CASTRO, Randall Romeo T.
@@ -50,7 +50,7 @@ However, the price contains a dictionary which contains the date (represented in
 Relational vs. NoSQL
 ---
 
-Relational Databases takes much more time to design and implement compared with NoSQL databases. Such that a lot of overhead times are needed for conceptualizing and planning the database structure, tables and attributes. After the Relational Database has been made, it's relatively harder for data to change, scale up and be up-to-date with new database changes.
+Relational Databases takes much more time to design and implement compared with NoSQL databases, such that a lot of overhead times are needed for conceptualizing and planning the database structure, tables and attributes. After the Relational Database has been made, it's relatively harder for data to change, scale up and be up-to-date with newer database changes.
 
 On the other hand, NoSQL databases takes no need for planning their structure and approach in designing and implementation. NoSQL databases can scale up relatively easier as their data increases in size and variety.
 
@@ -62,6 +62,7 @@ Execution Time: CouchDB vs. MongoDB
 
 For this analytics, the microtime() PHP function was used to record a relatively accurate time up to the millisecond. A total of 10 runs were made for each test and each runs is rounded up to the 4th decimal digit:
 
+(smaller time is better)
 
 ADD FRUIT [10 runs]
 MongoDB: 0.01405 seconds
@@ -87,8 +88,6 @@ Big Data: MySQL vs. CouchDB vs. MongoDB
 Given the assumption that the data is increasing as well as having rapid updates, MongoDB would suit the job perfectly. Not to mention MongoDB's faster execution time in terms of simple queries.
 
 Being a Non-Relational Database, MongoDB has no problems when scaling up its structure and adding up heterogenous data types.
-
-However, MongoDB may feel the slower load in time if given a heavy load in its query, but still it's up to par with MySQL.
 
 
 ----
