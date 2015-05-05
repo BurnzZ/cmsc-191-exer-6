@@ -1,0 +1,100 @@
+\documentclass[journal]{./IEEE/IEEEtran}
+\usepackage{cite,graphicx,textcomp}
+
+\newcommand{\SPTITLE}{Comparative Exercise on MongoDB, CouchDB and MySQL databases}
+\newcommand{\ADVISEE}{Kevin Lloyd H. Bernal, Randall Romeo T. Castro, Dyanara M. Dela Rosa and Janet P. Ordillano}
+
+\newcommand{\BSCS}{Bachelor of Science in Computer Science}
+\newcommand{\ICS}{Institute of Computer Science}
+\newcommand{\UPLB}{University of the Philippines Los Ba\~{n}os}
+        
+\markboth{CMSC 191 Big Data: Management and Trends, \ICS}{}
+\title{\SPTITLE}
+\author{\ADVISEE}
+\pubid{\copyright~2014~ICS \UPLB}
+
+\begin{document}
+
+% TITLE
+\maketitle
+
+
+% INTRODUCTION
+The exercise was to make a web application with a basic CRUD interface for managing different types of fruits.
+
+Each fruit has to contain details like:
+	\begin{enumerate}
+    \item name
+    \item quantity
+    \item distributor
+    \item price (this changes everyday and history of changes must be saved)
+    \end{enumerate}
+
+\section{Implementation and Approach}
+
+A front-end boilerplate was made to have a uniform interface across all databases, as well as to speedup the coding process. A CodeIgniter PHP-framework was used in the Back-end.
+
+Each database implementation has their own dedicated project folder, which are independent from one another.
+\subsection{MySQL}
+Two separate tables were made, namely: `fruit` and `fruitprice`. The `fruit` table has the attributes: name, distributor, quantity and an ID. The fruit.ID refrences itself to the `fruitprice` table to determine a particular fruit's price history.
+
+\subsection{MongoDB}
+
+Same as the MySQL approach, two Collections were made, namely: `fruits` and `prices`. The same attributes from MySQL's `fruit` are in the MongoDB's `fruits` Collection, with the addition of currentPrices attribute. The Collection `prices` contain documents that pertain to a particular fruit's price history (same structure as with MySQL's).
+
+\subsection{CouchDB}
+
+A database named `myfruit` was made, with each of its document representing a distinct fruit having the details mentioned above as its data items.
+
+However, the price contains a dictionary which contains the date (represented inthe format: Y-m-d) as the key, while the price for that specific date as its value.
+
+\section{Relational vs. NoSQL}
+
+Relational Databases takes much more time to design and implement compared with NoSQL databases, such that a lot of overhead times are needed for conceptualizing and planning the database structure, tables and attributes. After the Relational Database has been made, it's relatively harder for data to change, scale up and be up-to-date with newer database changes.
+
+On the other hand, NoSQL databases takes no need for planning their structure and approach in designing and implementation. NoSQL databases can scale up relatively easier as their data increases in size and variety.
+
+\section{Execution Time: CouchDB vs. MongoDB}
+
+[A single computer was used to record the tests]
+
+For this analytics, the microtime() PHP function was used to record a relatively accurate time up to the millisecond. A total of 10 runs were made for each test and each runs is rounded up to the 4th decimal digit:
+
+(smaller time is better)
+\begin{itemize}
+\item{ADD FRUIT [10 runs]}
+	\begin{itemize}
+	\item{MongoDB: 0.01405 seconds}
+	\item{CouchDB: 0.03658 seconds}
+	\end{itemize}
+\item{EDIT FRUIT: [10 runs]}
+	\begin{itemize}
+	\item{MongoDB: 0.00451 seconds}
+	\item{CouchDB: 0.02076 seconds}
+	\end{itemize}
+
+\item{DELETE FRUIT: [10 runs]}
+	\begin{itemize}
+	\item{MongoDB: 0.00100 seconds}
+	\item{CouchDB: 0.01622 seconds}
+	\end{itemize}
+
+\item{VIEW ALL FRUITS [10 fruits with 1 price history]}
+	\begin{itemize}
+	\item{MongoDB: 0.001 seconds}
+	\item{CouchDB: 0.094 seconds}
+	\end{itemize}
+\end{itemize}
+
+\section{Big Data: MySQL vs. CouchDB vs. MongoDB}
+
+Given the assumption that the data is increasing as well as having rapid updates, MongoDB would suit the job perfectly. Not to mention MongoDB's faster execution time in terms of simple queries.
+
+Being a Non-Relational Database, MongoDB has no problems when scaling up its structure and adding up heterogenous data types.
+
+\section{Misc}
+
+The price changes for each day is represented by the javascript library called Highcharts.
+
+\end{document}
+
