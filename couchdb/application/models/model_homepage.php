@@ -28,19 +28,21 @@ class Model_homepage extends CI_Model {
         date_default_timezone_set('UTC');
         $today = mdate('%Y-%m-%d', now());
 
-		for($i=0; $i<$doc['total_rows']; $i++){
-			$data = (array)$doc['rows'][$i];
+        for($i=0; $i<$doc['total_rows']; $i++){
+            $data = (array)$doc['rows'][$i];
 
-			$mydata = $this->couchdb->getDoc($data['id']);
-			
-			$row = array(	'id' => $mydata->_id,
-							'name' => $mydata->name,
-							'price' => $mydata->price->$today,
-							'dist' => $mydata->dist,
-							'qty' => $mydata->qty);
+            $mydata = $this->couchdb->getDoc($data['id']);
+            
+            $row = array(   'id' => $mydata->_id,
+                            'name' => $mydata->name,
+                            'price' => $mydata->currentPrice,
+                            'dist' => $mydata->dist,
+                            'qty' => $mydata->qty);
 
-			array_push($fruits, $row);
-		}
+            array_push($fruits, $row);
+        }
+
+		
 
 		return $fruits;
     }
@@ -68,7 +70,7 @@ class Model_homepage extends CI_Model {
     	$doc->_id = "" .$count. "";
     	$doc->name = $name;
     	$doc->price = array($today => $price);
-
+        $doc->currentPrice = $price;
     	$doc->dist = $dist;
     	$doc->qty = (int)$qty;
     	try {
@@ -95,11 +97,12 @@ class Model_homepage extends CI_Model {
 
         /* code for testing data */
         // date_default_timezone_set('UTC');
-        // $now = now() - (4 * 24 * 3600);
+        // $now = now() - (1 * 24 * 3600);
         // $today = mdate('%Y-%m-%d', $now);
 
     	$doc->name = $name;
     	$doc->price->$today = $price;
+        $doc->currentPrice = $price;
     	$doc->dist = $dist;
     	$doc->qty = (int)$qty;
 
